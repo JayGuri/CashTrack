@@ -4,7 +4,8 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import { API_URL } from "../config"
 import { toast } from "react-hot-toast"
-import { FaTimes } from "react-icons/fa"
+import { FaTimes, FaRupeeSign } from "react-icons/fa"
+import StarBorder from "./StarBorder"
 import "./ExpenseForm.css"
 
 const ExpenseForm = ({ onClose, onExpenseAdded, categories, expense = null }) => {
@@ -66,7 +67,7 @@ const ExpenseForm = ({ onClose, onExpenseAdded, categories, expense = null }) =>
   return (
     <div className="expense-form-container">
       <div className="expense-form-header">
-        <h2>{expense ? "Edit Expense" : "Add New Expense"}</h2>
+        <h2>{expense ? "Edit Expense" : "Add New Expense"} <FaRupeeSign /></h2>
         <button className="close-btn" onClick={onClose}>
           <FaTimes />
         </button>
@@ -74,7 +75,7 @@ const ExpenseForm = ({ onClose, onExpenseAdded, categories, expense = null }) =>
 
       <form className="expense-form" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="amount">Amount ($)</label>
+          <label htmlFor="amount"><FaRupeeSign className="input-icon" /> Amount (₹)</label>
           <input
             type="number"
             id="amount"
@@ -119,12 +120,12 @@ const ExpenseForm = ({ onClose, onExpenseAdded, categories, expense = null }) =>
         </div>
 
         <div className="form-actions">
-          <button type="button" className="btn btn-outline" onClick={onClose} disabled={isLoading}>
+          <StarBorder as="button" type="button" className="btn btn-outline" color="#00897b" speed="5s" onClick={onClose} disabled={isLoading}>
             Cancel
-          </button>
-          <button type="submit" className="btn btn-primary" disabled={isLoading}>
+          </StarBorder>
+          <StarBorder as="button" type="submit" className="btn btn-primary" color="#1e88e5" speed="5s" disabled={isLoading}>
             {isLoading ? "Saving..." : expense ? "Update Expense" : "Add Expense"}
-          </button>
+          </StarBorder>
         </div>
       </form>
     </div>

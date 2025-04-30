@@ -4,6 +4,8 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
 import { toast } from "react-hot-toast"
+import { FaRupeeSign, FaUser, FaEnvelope, FaLock } from "react-icons/fa"
+import StarBorder from "../components/StarBorder"
 import "./AuthPages.css"
 
 const SignupPage = () => {
@@ -51,12 +53,12 @@ const SignupPage = () => {
       <div className="auth-container">
         <div className="auth-card">
           <div className="auth-header">
-            <h1>Create Account 🚀</h1>
+            <h1>Create Account <FaRupeeSign /></h1>
             <p>Sign up to start tracking your expenses</p>
           </div>
           <form className="auth-form" onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name"><FaUser className="input-icon" /> Name</label>
               <input
                 type="text"
                 id="name"
@@ -68,7 +70,7 @@ const SignupPage = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email"><FaEnvelope className="input-icon" /> Email</label>
               <input
                 type="email"
                 id="email"
@@ -80,7 +82,7 @@ const SignupPage = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password"><FaLock className="input-icon" /> Password</label>
               <input
                 type="password"
                 id="password"
@@ -92,7 +94,7 @@ const SignupPage = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="confirmPassword">Confirm Password</label>
+              <label htmlFor="confirmPassword"><FaLock className="input-icon" /> Confirm Password</label>
               <input
                 type="password"
                 id="confirmPassword"
@@ -103,9 +105,9 @@ const SignupPage = () => {
                 required
               />
             </div>
-            <button type="submit" className="btn btn-primary btn-block" disabled={isLoading}>
+            <StarBorder as="button" type="submit" className="btn btn-primary btn-block" color="#1e88e5" speed="5s" disabled={isLoading}>
               {isLoading ? "Creating Account..." : "Sign Up"}
-            </button>
+            </StarBorder>
           </form>
           <div className="auth-footer">
             <p>

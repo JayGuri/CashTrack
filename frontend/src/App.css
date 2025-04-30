@@ -1,7 +1,7 @@
 :root {
   --primary: #1e88e5;
   --secondary: #00897b;
-  --accent: #ffc107;
+  --accent: #4caf50;
   --danger: #e53935;
   --success: #43a047;
   --dark: #263238;
@@ -209,4 +209,10 @@ body {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.rupee-icon {
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  margin-right: 4px;
 }

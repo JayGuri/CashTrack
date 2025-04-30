@@ -4,6 +4,8 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
 import { toast } from "react-hot-toast"
+import { FaRupeeSign, FaUser, FaLock } from "react-icons/fa"
+import StarBorder from "../components/StarBorder"
 import "./AuthPages.css"
 
 const LoginPage = () => {
@@ -39,12 +41,12 @@ const LoginPage = () => {
       <div className="auth-container">
         <div className="auth-card">
           <div className="auth-header">
-            <h1>Welcome Back! 👋</h1>
+            <h1>Welcome Back! <FaRupeeSign /></h1>
             <p>Log in to continue tracking your expenses</p>
           </div>
           <form className="auth-form" onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email"><FaUser className="input-icon" /> Email</label>
               <input
                 type="email"
                 id="email"
@@ -56,7 +58,7 @@ const LoginPage = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password"><FaLock className="input-icon" /> Password</label>
               <input
                 type="password"
                 id="password"
@@ -67,9 +69,9 @@ const LoginPage = () => {
                 required
               />
             </div>
-            <button type="submit" className="btn btn-primary btn-block" disabled={isLoading}>
+            <StarBorder as="button" type="submit" className="btn btn-primary btn-block" color="#1e88e5" speed="5s" disabled={isLoading}>
               {isLoading ? "Logging in..." : "Login"}
-            </button>
+            </StarBorder>
           </form>
           <div className="auth-footer">
             <p>

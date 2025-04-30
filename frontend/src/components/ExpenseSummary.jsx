@@ -1,4 +1,4 @@
-import { FaMoneyBillWave } from "react-icons/fa"
+import { FaRupeeSign } from "react-icons/fa"
 import "./ExpenseSummary.css"
 
 const ExpenseSummary = ({ totalExpenses, isLoading }) => {
@@ -13,7 +13,7 @@ const ExpenseSummary = ({ totalExpenses, isLoading }) => {
     <div className="expense-summary">
       <div className="summary-card">
         <div className="summary-icon">
-          <FaMoneyBillWave />
+          <FaRupeeSign />
         </div>
         <div className="summary-content">
           <h3>Total Expenses</h3>

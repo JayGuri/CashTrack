@@ -19,6 +19,13 @@
   font-size: 1.8rem;
   font-weight: 700;
   letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+}
+
+.rupee-logo {
+  margin-left: 5px;
+  font-size: 1.5rem;
 }
 
 .logo-accent {
@@ -32,12 +39,8 @@
 
 .hero-section {
   padding: 5rem 0;
-  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+  background: linear-gradient(135deg, #1e88e5 0%, #00897b 100%);
   color: white;
-}
-
-.hero-content {
-  max-width: 600px;
 }
 
 .container {
@@ -57,6 +60,9 @@
   font-weight: 800;
   margin-bottom: 1.5rem;
   line-height: 1.2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .text-accent {
@@ -112,6 +118,10 @@
   font-size: 2.5rem;
   margin-bottom: 3rem;
   color: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .features-grid {
@@ -127,6 +137,7 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
+  border-top: 3px solid var(--primary);
 }
 
 .feature-card:hover {
@@ -153,7 +164,7 @@
 
 .cta-section {
   padding: 5rem 0;
-  background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+  background: linear-gradient(135deg, #00897b 0%, #1e88e5 100%);
   color: white;
   text-align: center;
 }
@@ -161,6 +172,10 @@
 .cta-content h2 {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .cta-content p {
@@ -188,6 +203,9 @@
 .footer-logo {
   font-size: 1.5rem;
   font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 @media (max-width: 992px) {
@@ -206,6 +224,7 @@
 
   .hero-content h1 {
     font-size: 2.5rem;
+    justify-content: center;
   }
 }
 

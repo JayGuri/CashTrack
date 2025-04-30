@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import { API_URL, DEFAULT_CATEGORIES } from "../config"
 import { toast } from "react-hot-toast"
-import { FaChartPie, FaChartBar, FaChartLine, FaCalendarAlt, FaDownload } from "react-icons/fa"
+import { FaChartPie, FaChartBar, FaChartLine, FaCalendarAlt, FaDownload, FaRupeeSign } from "react-icons/fa"
 import {
   PieChart,
   Pie,
@@ -20,6 +20,7 @@ import {
   LineChart,
   Line,
 } from "recharts"
+import StarBorder from "../components/StarBorder"
 import "./ReportPage.css"
 
 const ReportPage = () => {
@@ -97,10 +98,16 @@ const ReportPage = () => {
   return (
     <div className="report-page-container">
       <div className="report-page-header">
-        <h1>Reports & Analytics</h1>
-        <button className="btn btn-primary export-btn" onClick={handleExportData}>
+        <h1>Reports & Analytics <FaRupeeSign /></h1>
+        <StarBorder
+          as="button"
+          className="btn btn-primary export-btn"
+          color="#1e88e5"
+          speed="5s"
+          onClick={handleExportData}
+        >
           <FaDownload /> Export Data
-        </button>
+        </StarBorder>
       </div>
 
       <div className="report-filters">
@@ -133,7 +140,7 @@ const ReportPage = () => {
           <div className="report-card">
             <div className="card-header">
               <h2>
-                <FaChartPie /> Spending by Category
+                <FaChartPie /> Spending by Category <FaRupeeSign />
               </h2>
             </div>
             <div className="card-body">
@@ -175,7 +182,7 @@ const ReportPage = () => {
           <div className="report-card">
             <div className="card-header">
               <h2>
-                <FaChartBar /> Monthly Breakdown
+                <FaChartBar /> Monthly Breakdown <FaRupeeSign />
               </h2>
             </div>
             <div className="card-body">
@@ -205,7 +212,7 @@ const ReportPage = () => {
           <div className="report-card">
             <div className="card-header">
               <h2>
-                <FaCalendarAlt /> Spending by Day of Week
+                <FaCalendarAlt /> Spending by Day of Week <FaRupeeSign />
               </h2>
             </div>
             <div className="card-body">
@@ -226,7 +233,7 @@ const ReportPage = () => {
           <div className="report-card">
             <div className="card-header">
               <h2>
-                <FaChartLine /> Daily Spending Trend
+                <FaChartLine /> Daily Spending Trend <FaRupeeSign />
               </h2>
             </div>
             <div className="card-body">

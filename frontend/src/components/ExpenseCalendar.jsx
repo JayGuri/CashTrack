@@ -1,7 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { FaChevronLeft, FaChevronRight, FaTrash, FaEdit } from "react-icons/fa"
+import { FaChevronLeft, FaChevronRight, FaTrash, FaEdit, FaRupeeSign } from "react-icons/fa"
+import StarBorder from "./StarBorder"
 import "./ExpenseCalendar.css"
 
 const ExpenseCalendar = ({ expenses, categories, onEditExpense, onDeleteExpense }) => {
@@ -63,15 +64,15 @@ const ExpenseCalendar = ({ expenses, categories, onEditExpense, onDeleteExpense 
 
     return (
       <div className="calendar-header">
-        <button className="calendar-nav-btn" onClick={prevMonth}>
+        <StarBorder as="button" className="calendar-nav-btn" color="#1e88e5" speed="5s" onClick={prevMonth}>
           <FaChevronLeft />
-        </button>
+        </StarBorder>
         <h3>
-          {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
+          {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()} <FaRupeeSign className="rupee-icon" />
         </h3>
-        <button className="calendar-nav-btn" onClick={nextMonth}>
+        <StarBorder as="button" className="calendar-nav-btn" color="#1e88e5" speed="5s" onClick={nextMonth}>
           <FaChevronRight />
-        </button>
+        </StarBorder>
       </div>
     )
   }
@@ -122,7 +123,9 @@ const ExpenseCalendar = ({ expenses, categories, onEditExpense, onDeleteExpense 
           <div className="cell-date">{day}</div>
           {dayExpenses.length > 0 && (
             <div className="cell-content">
-              <div className="day-total">{formatCurrency(dayTotal)}</div>
+              <div className="day-total">
+                <FaRupeeSign className="rupee-icon-small" /> {formatCurrency(dayTotal)}
+              </div>
               <div className="day-expenses">
                 {dayExpenses.map((expense) => (
                   <div className="day-expense-item" key={expense._id}>
@@ -134,12 +137,24 @@ const ExpenseCalendar = ({ expenses, categories, onEditExpense, onDeleteExpense 
                       <div className="expense-amount">{formatCurrency(expense.amount)}</div>
                     </div>
                     <div className="expense-actions">
-                      <button className="expense-edit-btn" onClick={() => onEditExpense(expense)}>
+                      <StarBorder
+                        as="button"
+                        className="expense-edit-btn"
+                        color="#00897b"
+                        speed="5s"
+                        onClick={() => onEditExpense(expense)}
+                      >
                         <FaEdit />
-                      </button>
-                      <button className="expense-delete-btn" onClick={() => onDeleteExpense(expense._id)}>
+                      </StarBorder>
+                      <StarBorder
+                        as="button"
+                        className="expense-delete-btn"
+                        color="#e53935"
+                        speed="5s"
+                        onClick={() => onDeleteExpense(expense._id)}
+                      >
                         <FaTrash />
-                      </button>
+                      </StarBorder>
                     </div>
                   </div>
                 ))}

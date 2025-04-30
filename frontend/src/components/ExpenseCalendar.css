@@ -1,218 +1,273 @@
 .expense-calendar {
-    width: 100%;
-  }
-  
-  .calendar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
-  
-  .calendar-header h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--dark);
-  }
-  
-  .calendar-nav-btn {
-    background: none;
-    border: none;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    color: var(--primary);
-  }
-  
-  .calendar-nav-btn:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-  }
-  
-  .calendar-days {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .calendar-day-name {
-    text-align: center;
-    font-weight: 600;
-    color: var(--text);
-    padding: 0.5rem;
-    font-size: 0.9rem;
-  }
-  
-  .calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 0.5rem;
-  }
-  
+  width: 100%;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  background-color: rgba(30, 136, 229, 0.05);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.calendar-header h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rupee-icon {
+  font-size: 1rem;
+  color: var(--primary);
+}
+
+.rupee-icon-small {
+  font-size: 0.8rem;
+  color: var(--primary);
+  margin-right: 2px;
+}
+
+.calendar-nav-btn {
+  background: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: var(--primary);
+}
+
+.calendar-nav-btn .inner-content {
+  background: rgba(30, 136, 229, 0.1);
+  border: 1px solid rgba(30, 136, 229, 0.2);
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.calendar-day-name {
+  text-align: center;
+  font-weight: 600;
+  color: var(--text);
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  background-color: rgba(0, 137, 123, 0.1);
+  border-radius: 4px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+
+.calendar-cell {
+  min-height: 100px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.calendar-cell:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-cell.empty {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.calendar-cell.has-expenses {
+  background-color: rgba(30, 136, 229, 0.05);
+  border-color: rgba(30, 136, 229, 0.2);
+}
+
+.cell-date {
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+  background-color: rgba(0, 137, 123, 0.1);
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.cell-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.day-total {
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  background-color: rgba(30, 136, 229, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  display: inline-flex;
+}
+
+.day-expenses {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.day-expense-item {
+  display: flex;
+  align-items: center;
+  padding: 0.25rem;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.day-expense-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.expense-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.5rem;
+  font-size: 0.7rem;
+}
+
+.expense-details {
+  flex: 1;
+  font-size: 0.8rem;
+}
+
+.expense-description {
+  font-weight: 500;
+  color: var(--dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+}
+
+.expense-amount {
+  font-size: 0.75rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+}
+
+.expense-actions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.expense-edit-btn,
+.expense-delete-btn {
+  background: none;
+  border: none;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.7rem;
+}
+
+.expense-edit-btn .inner-content,
+.expense-delete-btn .inner-content {
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.expense-edit-btn {
+  color: var(--secondary);
+}
+
+.expense-delete-btn {
+  color: var(--danger);
+}
+
+@media (max-width: 992px) {
   .calendar-cell {
-    min-height: 100px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 0.5rem;
-    position: relative;
+    min-height: 80px;
   }
-  
-  .calendar-cell.empty {
-    background-color: rgba(0, 0, 0, 0.02);
+}
+
+@media (max-width: 768px) {
+  .calendar-grid {
+    grid-template-columns: repeat(1, 1fr);
   }
-  
-  .calendar-cell.has-expenses {
-    background-color: rgba(142, 68, 173, 0.05);
-    border-color: rgba(142, 68, 173, 0.2);
+
+  .calendar-days {
+    display: none;
   }
-  
+
+  .calendar-cell {
+    min-height: auto;
+    padding: 0.75rem;
+  }
+
   .cell-date {
-    font-weight: 600;
-    color: var(--dark);
-    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
   }
-  
-  .cell-content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .day-total {
-    font-weight: 600;
-    color: var(--primary);
-    font-size: 0.9rem;
-  }
-  
-  .day-expenses {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    max-height: 150px;
-    overflow-y: auto;
-  }
-  
+
   .day-expense-item {
-    display: flex;
-    align-items: center;
-    padding: 0.25rem;
-    background-color: white;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    padding: 0.5rem;
   }
-  
+
   .expense-icon {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 0.5rem;
-    font-size: 0.7rem;
-  }
-  
-  .expense-details {
-    flex: 1;
+    width: 24px;
+    height: 24px;
     font-size: 0.8rem;
   }
-  
+
+  .expense-details {
+    font-size: 0.9rem;
+  }
+
   .expense-description {
-    font-weight: 500;
-    color: var(--dark);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100px;
+    max-width: none;
   }
-  
+
   .expense-amount {
-    font-size: 0.75rem;
-    color: var(--text);
+    font-size: 0.85rem;
   }
-  
-  .expense-actions {
-    display: flex;
-    gap: 0.25rem;
-  }
-  
+
   .expense-edit-btn,
   .expense-delete-btn {
-    background: none;
-    border: none;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 0.7rem;
+    width: 24px;
+    height: 24px;
+    font-size: 0.8rem;
   }
-  
-  .expense-edit-btn {
-    color: var(--secondary);
-  }
-  
-  .expense-delete-btn {
-    color: var(--danger);
-  }
-  
-  @media (max-width: 992px) {
-    .calendar-cell {
-      min-height: 80px;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .calendar-grid {
-      grid-template-columns: repeat(1, 1fr);
-    }
-  
-    .calendar-days {
-      display: none;
-    }
-  
-    .calendar-cell {
-      min-height: auto;
-      padding: 0.75rem;
-    }
-  
-    .cell-date {
-      font-size: 1.1rem;
-    }
-  
-    .day-expense-item {
-      padding: 0.5rem;
-    }
-  
-    .expense-icon {
-      width: 24px;
-      height: 24px;
-      font-size: 0.8rem;
-    }
-  
-    .expense-details {
-      font-size: 0.9rem;
-    }
-  
-    .expense-description {
-      max-width: none;
-    }
-  
-    .expense-amount {
-      font-size: 0.85rem;
-    }
-  
-    .expense-edit-btn,
-    .expense-delete-btn {
-      width: 24px;
-      height: 24px;
-      font-size: 0.8rem;
-    }
-  }
-  
+}

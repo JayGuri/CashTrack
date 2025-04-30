@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import { API_URL, DEFAULT_CATEGORIES } from "../config"
 import { toast } from "react-hot-toast"
-import { FaPlus, FaFilter, FaSearch, FaTrash, FaEdit, FaCalendarAlt } from "react-icons/fa"
+import { FaPlus, FaFilter, FaSearch, FaTrash, FaEdit, FaCalendarAlt, FaRupeeSign } from "react-icons/fa"
 import ExpenseForm from "../components/ExpenseForm"
 import ExpenseCalendar from "../components/ExpenseCalendar"
 import StarBorder from "../components/StarBorder"
@@ -129,20 +129,26 @@ const ExpensePage = () => {
   return (
     <div className="expense-page-container">
       <div className="expense-page-header">
-        <h1>Expenses</h1>
+        <h1>Expenses <FaRupeeSign /></h1>
         <div className="expense-page-actions">
-          <button
+          <StarBorder
+            as="button"
             className={`btn btn-outline view-toggle ${viewMode === "list" ? "active" : ""}`}
+            color="#00897b"
+            speed="5s"
             onClick={() => setViewMode("list")}
           >
             List View
-          </button>
-          <button
+          </StarBorder>
+          <StarBorder
+            as="button"
             className={`btn btn-outline view-toggle ${viewMode === "calendar" ? "active" : ""}`}
+            color="#00897b"
+            speed="5s"
             onClick={() => setViewMode("calendar")}
           >
             <FaCalendarAlt /> Calendar
-          </button>
+          </StarBorder>
           <StarBorder
             as="button"
             className="btn add-expense-btn"
@@ -185,9 +191,15 @@ const ExpensePage = () => {
           />
         </div>
 
-        <button className={`filter-toggle ${showFilters ? "active" : ""}`} onClick={() => setShowFilters(!showFilters)}>
+        <StarBorder
+          as="button"
+          className={`filter-toggle ${showFilters ? "active" : ""}`}
+          color="#00897b"
+          speed="5s"
+          onClick={() => setShowFilters(!showFilters)}
+        >
           <FaFilter /> Filters
-        </button>
+        </StarBorder>
 
         {showFilters && (
           <div className="filter-options">
@@ -208,9 +220,15 @@ const ExpensePage = () => {
               <input type="date" value={dateFilter} onChange={(e) => setDateFilter(e.target.value)} />
             </div>
 
-            <button className="btn btn-outline btn-sm" onClick={resetFilters}>
+            <StarBorder
+              as="button"
+              className="btn btn-outline btn-sm"
+              color="#00897b"
+              speed="5s"
+              onClick={resetFilters}
+            >
               Reset Filters
-            </button>
+            </StarBorder>
           </div>
         )}
       </div>
@@ -245,12 +263,24 @@ const ExpensePage = () => {
                     </div>
                     <div className="expense-amount">{formatCurrency(expense.amount)}</div>
                     <div className="expense-actions">
-                      <button className="expense-edit-btn" onClick={() => handleEditExpense(expense)}>
+                      <StarBorder
+                        as="button"
+                        className="expense-edit-btn"
+                        color="#00897b"
+                        speed="5s"
+                        onClick={() => handleEditExpense(expense)}
+                      >
                         <FaEdit />
-                      </button>
-                      <button className="expense-delete-btn" onClick={() => handleDeleteExpense(expense._id)}>
+                      </StarBorder>
+                      <StarBorder
+                        as="button"
+                        className="expense-delete-btn"
+                        color="#e53935"
+                        speed="5s"
+                        onClick={() => handleDeleteExpense(expense._id)}
+                      >
                         <FaTrash />
-                      </button>
+                      </StarBorder>
                     </div>
                   </div>
                 ))
