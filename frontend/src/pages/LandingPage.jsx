@@ -32,7 +32,10 @@ const LandingPage = () => {
         <div className="container">
           <div className="hero-content">
             <h1>
-              Track Your Money <span className="text-accent">Like a Boss</span> <FaRupeeSign />
+              <span className="text-accent">Track Your Money </span>
+            </h1>
+            <h1>
+              <span className="text-accent">Like a Boss</span>
             </h1>
             <p>The expense tracker that speaks your language. No more boring spreadsheets!</p>
             <div className="hero-buttons">
@@ -49,14 +52,16 @@ const LandingPage = () => {
             </div>
           </div>
           <div className="hero-image">
-            <img src="/expense-tracker-dashboard.png" alt="CashTrack App Dashboard" />
+            <FaRupeeSign className="hero-rupee" />
           </div>
         </div>
       </section>
 
       <section id="features" className="features-section">
         <div className="container">
-          <h2 className="section-title">Why Choose CashTrack? <FaRupeeSign /></h2>
+          <h2 className="section-title">
+            Why Choose CashTrack? <FaRupeeSign />
+          </h2>
           <div className="features-grid">
             <div className="feature-card">
               <div className="feature-icon">
@@ -93,7 +98,9 @@ const LandingPage = () => {
       <section className="cta-section">
         <div className="container">
           <div className="cta-content">
-            <h2>Ready to take control of your finances? <FaRupeeSign /></h2>
+            <h2>
+              Ready to take control of your finances? <FaRupeeSign />
+            </h2>
             <p>Join thousands of users who've already leveled up their money management game.</p>
             <Link to="/signup">
               <StarBorder as="span" className="btn btn-primary btn-lg" color="#1e88e5" speed="5s">
@@ -110,7 +117,7 @@ const LandingPage = () => {
             <div className="footer-logo">
               Cash<span className="logo-accent">Track</span> <FaRupeeSign />
             </div>
-            <p>© 2023 CashTrack. All rights reserved.</p>
+            <p>© 2025 CashTrack. All rights reserved.</p>
           </div>
         </div>
       </footer>

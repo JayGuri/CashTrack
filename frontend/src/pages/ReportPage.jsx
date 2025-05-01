@@ -44,7 +44,20 @@ const ReportPage = () => {
       const response = await axios.get(`${API_URL}/api/reports`, {
         params: { dateRange, category: selectedCategory },
       })
-      setReportData(response.data)
+
+      // Process the data to ensure category names are properly displayed
+      const processedData = {
+        ...response.data,
+        categoryData: response.data.categoryData.map((item) => {
+          const category = DEFAULT_CATEGORIES.find((cat) => cat.id === item.id) || { name: item.id, color: "#ccc" }
+          return {
+            ...item,
+            name: category.name.replace(/[🍔🛍️🚗🎬💡💪📚✈️💇🎁🤷]/gu, "").trim(),
+          }
+        }),
+      }
+
+      setReportData(processedData)
     } catch (error) {
       console.error("Error fetching report data:", error)
       toast.error("Failed to load report data")
@@ -74,6 +87,11 @@ const ReportPage = () => {
     return category ? category.color : "#ccc"
   }
 
+  const getCategoryName = (categoryId) => {
+    const category = DEFAULT_CATEGORIES.find((cat) => cat.id === categoryId)
+    return category ? category.name.replace(/[🍔🛍️🚗🎬💡💪📚✈️💇🎁🤷]/gu, "").trim() : categoryId
+  }
+
   const handleExportData = () => {
     // In a real app, this would generate a CSV or PDF
     toast.success("Report exported successfully! 📊")
@@ -95,10 +113,33 @@ const ReportPage = () => {
     return null
   }
 
+  const PieChartCustomLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index, name }) => {
+    const RADIAN = Math.PI / 180
+    const radius = innerRadius + (outerRadius - innerRadius) * 0.5
+    const x = cx + radius * Math.cos(-midAngle * RADIAN)
+    const y = cy + radius * Math.sin(-midAngle * RADIAN)
+
+    return (
+      <text
+        x={x}
+        y={y}
+        fill="white"
+        textAnchor={x > cx ? "start" : "end"}
+        dominantBaseline="central"
+        fontSize="12"
+        fontWeight="bold"
+      >
+        {`${(percent * 100).toFixed(0)}%`}
+      </text>
+    )
+  }
+
   return (
     <div className="report-page-container">
       <div className="report-page-header">
-        <h1>Reports & Analytics <FaRupeeSign /></h1>
+        <h1>
+          Reports & Analytics <FaRupeeSign />
+        </h1>
         <StarBorder
           as="button"
           className="btn btn-primary export-btn"
@@ -156,14 +197,14 @@ const ReportPage = () => {
                       fill="#8884d8"
                       dataKey="value"
                       nameKey="name"
-                      label={({ name, percent }) => `${(percent * 100).toFixed(0)}%`}
+                      label={<PieChartCustomLabel />}
                     >
                       {reportData.categoryData.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={getCategoryColor(entry.id)} />
                       ))}
                     </Pie>
                     <Tooltip formatter={(value) => formatCurrency(value)} />
-                    <Legend layout="vertical" verticalAlign="middle" align="right" />
+                    <Legend formatter={(value) => value} />
                   </PieChart>
                 </ResponsiveContainer>
               </div>
@@ -171,7 +212,7 @@ const ReportPage = () => {
                 {reportData.categoryData.map((entry, index) => (
                   <div className="legend-item" key={index}>
                     <div className="legend-color" style={{ backgroundColor: getCategoryColor(entry.id) }}></div>
-                    <div className="legend-text">{entry.name}</div>
+                    <div className="legend-text">{getCategoryName(entry.id)}</div>
                     <div className="legend-value">{formatCurrency(entry.value)}</div>
                   </div>
                 ))}
@@ -194,11 +235,11 @@ const ReportPage = () => {
                     <YAxis tickFormatter={(value) => `₹${value}`} />
                     <Tooltip content={<CustomTooltip />} />
                     <Legend />
-                    {DEFAULT_CATEGORIES.slice(0, 5).map((category, index) => (
+                    {DEFAULT_CATEGORIES.map((category, index) => (
                       <Bar
                         key={category.id}
                         dataKey={category.id}
-                        name={category.name.replace(/[🍔🛍️🚗🎬💡💪📚✈️💇🎁🤷]/gu, "").trim()}
+                        name={getCategoryName(category.id)}
                         stackId="a"
                         fill={getCategoryColor(category.id)}
                       />

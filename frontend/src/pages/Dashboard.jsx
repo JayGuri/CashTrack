@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import { API_URL, DEFAULT_CATEGORIES } from "../config"
 import { toast } from "react-hot-toast"
-import { FaPlus, FaChartPie, FaCalendarAlt, FaMoneyBillWave } from "react-icons/fa"
+import { FaPlus, FaChartPie, FaCalendarAlt, FaMoneyBillWave, FaRupeeSign } from "react-icons/fa"
 import ExpenseForm from "../components/ExpenseForm"
 import ExpenseSummary from "../components/ExpenseSummary"
 import RecentExpenses from "../components/RecentExpenses"
@@ -49,7 +49,12 @@ const Dashboard = () => {
   return (
     <div className="dashboard-container">
       <div className="dashboard-header">
-        <h1>Dashboard</h1>
+        <div className="dashboard-title">
+          <h1>Dashboard</h1>
+          <div className="dashboard-welcome">
+            <p>Welcome to your financial overview</p>
+          </div>
+        </div>
         <StarBorder
           as="button"
           className="btn add-expense-btn"
@@ -73,8 +78,13 @@ const Dashboard = () => {
         </div>
       )}
 
-      <div className="dashboard-summary">
-        <ExpenseSummary totalExpenses={isLoading ? 0 : dashboardData.totalExpenses} isLoading={isLoading} />
+      <div className="dashboard-hero">
+        <div className="hero-content">
+          <ExpenseSummary totalExpenses={isLoading ? 0 : dashboardData.totalExpenses} isLoading={isLoading} />
+        </div>
+        <div className="hero-icon">
+          <FaRupeeSign className="rupee-icon-large" />
+        </div>
       </div>
 
       <div className="dashboard-grid">

@@ -1,4 +1,5 @@
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts"
+import { FaRupeeSign } from "react-icons/fa"
 import "./CategoryDistribution.css"
 
 const CategoryDistribution = ({ data, categories, isLoading }) => {
@@ -11,7 +12,7 @@ const CategoryDistribution = ({ data, categories, isLoading }) => {
 
   const getCategoryName = (categoryId) => {
     const category = categories.find((cat) => cat.id === categoryId)
-    return category ? category.name : categoryId
+    return category ? category.name.replace(/[🍔🛍️🚗🎬💡💪📚✈️💇🎁🤷]/gu, "").trim() : categoryId
   }
 
   const getCategoryColor = (categoryId) => {
@@ -67,6 +68,26 @@ const CategoryDistribution = ({ data, categories, isLoading }) => {
               paddingAngle={2}
               dataKey="total"
               nameKey="category"
+              label={({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
+                const RADIAN = Math.PI / 180
+                const radius = innerRadius + (outerRadius - innerRadius) * 0.5
+                const x = cx + radius * Math.cos(-midAngle * RADIAN)
+                const y = cy + radius * Math.sin(-midAngle * RADIAN)
+
+                return (
+                  <text
+                    x={x}
+                    y={y}
+                    fill="white"
+                    textAnchor={x > cx ? "start" : "end"}
+                    dominantBaseline="central"
+                    fontSize="12"
+                    fontWeight="bold"
+                  >
+                    {`${(percent * 100).toFixed(0)}%`}
+                  </text>
+                )
+              }}
             >
               {data.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={getCategoryColor(entry.category)} />
@@ -83,7 +104,9 @@ const CategoryDistribution = ({ data, categories, isLoading }) => {
               {getCategoryIcon(entry.category)}
             </div>
             <div className="legend-label">{getCategoryName(entry.category)}</div>
-            <div className="legend-value">{formatCurrency(entry.total)}</div>
+            <div className="legend-value">
+              <FaRupeeSign className="rupee-icon-small" /> {formatCurrency(entry.total)}
+            </div>
           </div>
         ))}
       </div>
