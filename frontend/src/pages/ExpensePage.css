@@ -1,298 +1,320 @@
 .expense-page-container {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.expense-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.expense-page-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.expense-page-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.add-expense-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.view-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background-color: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.view-toggle.active {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.expense-filters {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  background: linear-gradient(to right, rgba(30, 136, 229, 0.05), rgba(0, 137, 123, 0.05));
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow);
+  transition: background 0.3s ease;
+}
+
+.dark-theme .expense-filters {
+  background: linear-gradient(to right, rgba(33, 150, 243, 0.1), rgba(0, 191, 165, 0.1));
+}
+
+.search-bar {
+  flex: 1;
+  min-width: 250px;
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text);
+  opacity: 0.5;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: var(--card-bg);
+  color: var(--text);
+  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.filter-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background-color: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-toggle.active {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.filter-options {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px var(--shadow);
+  margin-top: 0.5rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 200px;
+}
+
+.filter-group label {
+  font-weight: 500;
+  color: var(--dark);
+}
+
+.filter-group select,
+.filter-group input {
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background-color: var(--card-bg);
+  color: var(--text);
+  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.filter-group select:focus,
+.filter-group input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+.expense-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.expense-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+}
+
+.expense-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-hover);
+}
+
+.expense-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  font-size: 1.2rem;
+}
+
+.expense-details {
+  flex: 1;
+}
+
+.expense-description {
+  font-weight: 500;
+  color: var(--dark);
+  margin-bottom: 0.25rem;
+}
+
+.expense-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: var(--text);
+  opacity: 0.8;
+}
+
+.expense-amount {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--dark);
+  margin: 0 1rem;
+}
+
+.expense-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.expense-edit-btn,
+.expense-delete-btn {
+  background: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.expense-edit-btn {
+  color: var(--secondary);
+}
+
+.expense-delete-btn {
+  color: var(--danger);
+}
+
+.expense-edit-btn:hover,
+.expense-delete-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark-theme .expense-edit-btn:hover,
+.dark-theme .expense-delete-btn:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.no-expenses {
+  text-align: center;
+  padding: 3rem;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: background-color 0.3s ease;
+}
+
+.no-expenses p {
+  color: var(--text);
+  font-size: 1.1rem;
+}
+
+.loading-message {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text);
+  font-size: 1.1rem;
+}
+
+.expense-calendar-container {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px var(--shadow);
+  padding: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .expense-page-container {
+    padding: 1rem;
   }
-  
+
   .expense-page-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
   }
-  
-  .expense-page-header h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--dark);
-  }
-  
+
   .expense-page-actions {
-    display: flex;
-    gap: 0.75rem;
+    width: 100%;
   }
-  
+
   .add-expense-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  
-  .view-toggle {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    background-color: transparent;
-    color: var(--text);
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .view-toggle.active {
-    background-color: var(--primary);
-    color: white;
-    border-color: var(--primary);
-  }
-  
-  .expense-filters {
-    margin-bottom: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    align-items: center;
-  }
-  
-  .search-bar {
     flex: 1;
-    min-width: 250px;
-    position: relative;
+    justify-content: center;
   }
-  
-  .search-icon {
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--text);
-    opacity: 0.5;
-  }
-  
-  .search-bar input {
-    width: 100%;
-    padding: 0.75rem 1rem 0.75rem 2.5rem;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-size: 1rem;
-  }
-  
-  .search-bar input:focus {
-    outline: none;
-    border-color: var(--primary);
-  }
-  
-  .filter-toggle {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1rem;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background-color: transparent;
-    color: var(--text);
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .filter-toggle.active {
-    background-color: var(--primary);
-    color: white;
-    border-color: var(--primary);
-  }
-  
-  .filter-options {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding: 1rem;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    margin-top: 0.5rem;
-  }
-  
-  .filter-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    min-width: 200px;
-  }
-  
-  .filter-group label {
-    font-weight: 500;
-    color: var(--dark);
-  }
-  
-  .filter-group select,
-  .filter-group input {
-    padding: 0.5rem;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-size: 0.9rem;
-  }
-  
-  .filter-group select:focus,
-  .filter-group input:focus {
-    outline: none;
-    border-color: var(--primary);
-  }
-  
-  .btn-sm {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-  }
-  
-  .expense-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
+
   .expense-item {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    flex-wrap: wrap;
   }
-  
-  .expense-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .expense-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 1rem;
-    font-size: 1.2rem;
-  }
-  
-  .expense-details {
-    flex: 1;
-  }
-  
-  .expense-description {
-    font-weight: 500;
-    color: var(--dark);
-    margin-bottom: 0.25rem;
-  }
-  
-  .expense-meta {
-    display: flex;
-    gap: 1rem;
-    font-size: 0.85rem;
-    color: var(--text);
-    opacity: 0.8;
-  }
-  
+
   .expense-amount {
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: var(--dark);
-    margin: 0 1rem;
+    width: 100%;
+    margin: 0.5rem 0;
   }
-  
+
   .expense-actions {
-    display: flex;
-    gap: 0.5rem;
+    width: 100%;
+    justify-content: flex-end;
   }
-  
-  .expense-edit-btn,
-  .expense-delete-btn {
-    background: none;
-    border: none;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-  
-  .expense-edit-btn {
-    color: var(--secondary);
-  }
-  
-  .expense-delete-btn {
-    color: var(--danger);
-  }
-  
-  .expense-edit-btn:hover,
-  .expense-delete-btn:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-  }
-  
-  .no-expenses {
-    text-align: center;
-    padding: 3rem;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  }
-  
-  .no-expenses p {
-    color: var(--text);
-    font-size: 1.1rem;
-  }
-  
-  .loading-message {
-    text-align: center;
-    padding: 2rem;
-    color: var(--text);
-    font-size: 1.1rem;
-  }
-  
-  .expense-calendar-container {
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    padding: 1rem;
-  }
-  
-  @media (max-width: 768px) {
-    .expense-page-container {
-      padding: 1rem;
-    }
-  
-    .expense-page-header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1rem;
-    }
-  
-    .expense-page-actions {
-      width: 100%;
-    }
-  
-    .add-expense-btn {
-      flex: 1;
-      justify-content: center;
-    }
-  
-    .expense-item {
-      flex-wrap: wrap;
-    }
-  
-    .expense-amount {
-      width: 100%;
-      margin: 0.5rem 0;
-    }
-  
-    .expense-actions {
-      width: 100%;
-      justify-content: flex-end;
-    }
-  }
-  
+}

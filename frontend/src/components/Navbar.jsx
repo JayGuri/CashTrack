@@ -5,6 +5,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
 import { FaChartPie, FaMoneyBillWave, FaSignOutAlt, FaUser, FaTachometerAlt } from "react-icons/fa"
 import StarBorder from "./StarBorder"
+import ThemeToggle from "./ThemeToggle"
 import "./Navbar.css"
 
 const Navbar = () => {
@@ -62,6 +63,7 @@ const Navbar = () => {
         </ul>
 
         <div className={`navbar-user ${isMenuOpen ? "active" : ""}`}>
+          <ThemeToggle />
           <div className="user-info">
             <FaUser />
             <span>{user?.name || "User"}</span>

@@ -10,6 +10,34 @@
   --background: #f5f7fa;
   --card-bg: #ffffff;
   --border: #cfd8dc;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --shadow-hover: rgba(0, 0, 0, 0.15);
+  --chart-1: #1e88e5;
+  --chart-2: #00897b;
+  --chart-3: #4caf50;
+  --chart-4: #ff9800;
+  --chart-5: #e53935;
+}
+
+.dark-theme {
+  --primary: #2196f3;
+  --secondary: #00bfa5;
+  --accent: #66bb6a;
+  --danger: #f44336;
+  --success: #4caf50;
+  --dark: #eceff1;
+  --light: #263238;
+  --text: #b0bec5;
+  --background: #121212;
+  --card-bg: #1e1e1e;
+  --border: #424242;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --shadow-hover: rgba(0, 0, 0, 0.4);
+  --chart-1: #2196f3;
+  --chart-2: #00bfa5;
+  --chart-3: #66bb6a;
+  --chart-4: #ffa726;
+  --chart-5: #f44336;
 }
 
 * {
@@ -22,6 +50,7 @@
 body {
   background-color: var(--background);
   color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -78,9 +107,10 @@ body {
 .card {
   background-color: var(--card-bg);
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px var(--shadow);
   padding: 20px;
   margin-bottom: 20px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-group {
@@ -99,6 +129,9 @@ body {
   border: 1px solid var(--border);
   border-radius: 8px;
   font-size: 16px;
+  background-color: var(--card-bg);
+  color: var(--text);
+  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .form-control:focus {
@@ -200,7 +233,7 @@ body {
 }
 
 .shadow {
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px 0 var(--shadow), 0 1px 2px 0 var(--shadow);
 }
 
 .overflow-hidden {

@@ -3,28 +3,32 @@
 }
 
 .summary-card {
-  background-color: white;
+  background-color: var(--card-bg);
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px var(--shadow);
   padding: 1.5rem;
   display: flex;
   align-items: center;
   gap: 1.5rem;
   border-left: 4px solid var(--primary);
-  transition: transform 0.3s ease;
-  background: linear-gradient(to right, rgba(30, 136, 229, 0.05), white);
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  background: linear-gradient(to right, rgba(30, 136, 229, 0.05), var(--card-bg));
+}
+
+.dark-theme .summary-card {
+  background: linear-gradient(to right, rgba(30, 136, 229, 0.1), var(--card-bg));
 }
 
 .summary-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px var(--shadow-hover);
 }
 
 .summary-icon {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #1e88e5, #00897b);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: white;
   display: flex;
   align-items: center;
@@ -65,7 +69,7 @@
 .skeleton-loader {
   height: 2rem;
   width: 150px;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--border) 25%, var(--card-bg) 50%, var(--border) 75%);
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
   border-radius: 4px;

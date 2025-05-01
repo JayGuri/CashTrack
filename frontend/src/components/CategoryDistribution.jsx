@@ -1,8 +1,13 @@
+"use client"
+
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts"
 import { FaRupeeSign } from "react-icons/fa"
+import { useTheme } from "../contexts/ThemeContext"
 import "./CategoryDistribution.css"
 
 const CategoryDistribution = ({ data, categories, isLoading }) => {
+  const { isDarkTheme } = useTheme()
+
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat("en-IN", {
       style: "currency",

@@ -12,7 +12,11 @@
   background: linear-gradient(to right, rgba(30, 136, 229, 0.1), rgba(0, 137, 123, 0.1));
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.dark-theme .dashboard-header {
+  background: linear-gradient(to right, rgba(33, 150, 243, 0.15), rgba(0, 191, 165, 0.15));
 }
 
 .dashboard-title h1 {
@@ -37,10 +41,14 @@
   display: flex;
   align-items: center;
   margin-bottom: 2rem;
-  background: linear-gradient(135deg, rgba(30, 136, 229, 0.05) 0%, rgba(0, 137, 123, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(30, 136, 229, 0.05), rgba(0, 137, 123, 0.05) 100%);
   border-radius: 12px;
   padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.dark-theme .dashboard-hero {
+  background: linear-gradient(135deg, rgba(33, 150, 243, 0.1), rgba(0, 191, 165, 0.1) 100%);
 }
 
 .hero-content {
@@ -57,7 +65,7 @@
 .rupee-icon-large {
   font-size: 8rem;
   color: #4caf50;
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 0 10px var(--shadow));
   animation: float 6s ease-in-out infinite;
 }
 
@@ -80,24 +88,30 @@
 }
 
 .dashboard-card {
-  background-color: white;
+  background-color: var(--card-bg);
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px var(--shadow);
   overflow: hidden;
   border-top: 3px solid;
-  border-image: linear-gradient(to right, #1e88e5, #00897b) 1;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-image: linear-gradient(to right, var(--primary), var(--secondary)) 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .dashboard-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 20px var(--shadow-hover);
 }
 
 .card-header {
   padding: 1.25rem;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border);
   background: linear-gradient(to right, rgba(30, 136, 229, 0.05), rgba(0, 137, 123, 0.05));
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-theme .card-header {
+  background: linear-gradient(to right, rgba(33, 150, 243, 0.1), rgba(0, 191, 165, 0.1));
+  border-bottom: 1px solid var(--border);
 }
 
 .card-header h2 {
@@ -140,14 +154,15 @@
 }
 
 .modal-content {
-  background-color: white;
+  background-color: var(--card-bg);
   border-radius: 12px;
   width: 90%;
   max-width: 500px;
   max-height: 90vh;
   overflow-y: auto;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px var(--shadow-hover);
   animation: modalFadeIn 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 @keyframes modalFadeIn {

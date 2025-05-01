@@ -10,6 +10,11 @@
   background-color: rgba(30, 136, 229, 0.05);
   padding: 1rem;
   border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.dark-theme .calendar-header {
+  background-color: rgba(33, 150, 243, 0.1);
 }
 
 .calendar-header h3 {
@@ -55,6 +60,11 @@
   justify-content: center;
 }
 
+.dark-theme .calendar-nav-btn .inner-content {
+  background: rgba(33, 150, 243, 0.2);
+  border: 1px solid rgba(33, 150, 243, 0.3);
+}
+
 .calendar-days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -70,6 +80,11 @@
   font-size: 0.9rem;
   background-color: rgba(0, 137, 123, 0.1);
   border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-theme .calendar-day-name {
+  background-color: rgba(0, 191, 165, 0.15);
 }
 
 .calendar-grid {
@@ -84,21 +99,30 @@
   border-radius: 8px;
   padding: 0.5rem;
   position: relative;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .calendar-cell:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px var(--shadow);
 }
 
 .calendar-cell.empty {
   background-color: rgba(0, 0, 0, 0.02);
 }
 
+.dark-theme .calendar-cell.empty {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
 .calendar-cell.has-expenses {
   background-color: rgba(30, 136, 229, 0.05);
   border-color: rgba(30, 136, 229, 0.2);
+}
+
+.dark-theme .calendar-cell.has-expenses {
+  background-color: rgba(33, 150, 243, 0.1);
+  border-color: rgba(33, 150, 243, 0.3);
 }
 
 .cell-date {
@@ -109,6 +133,11 @@
   display: inline-block;
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-theme .cell-date {
+  background-color: rgba(0, 191, 165, 0.15);
 }
 
 .cell-content {
@@ -127,6 +156,11 @@
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   display: inline-flex;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-theme .day-total {
+  background-color: rgba(33, 150, 243, 0.2);
 }
 
 .day-expenses {
@@ -141,15 +175,15 @@
   display: flex;
   align-items: center;
   padding: 0.25rem;
-  background-color: white;
+  background-color: var(--card-bg);
   border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
+  box-shadow: 0 1px 3px var(--shadow);
+  transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .day-expense-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px var(--shadow-hover);
 }
 
 .expense-icon {

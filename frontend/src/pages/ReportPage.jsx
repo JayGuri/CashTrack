@@ -20,10 +20,12 @@ import {
   LineChart,
   Line,
 } from "recharts"
+import { useTheme } from "../contexts/ThemeContext"
 import StarBorder from "../components/StarBorder"
 import "./ReportPage.css"
 
 const ReportPage = () => {
+  const { isDarkTheme } = useTheme()
   const [reportData, setReportData] = useState({
     categoryData: [],
     monthlyData: [],
@@ -230,9 +232,12 @@ const ReportPage = () => {
               <div className="chart-container">
                 <ResponsiveContainer width="100%" height={300}>
                   <BarChart data={reportData.monthlyData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis tickFormatter={(value) => `₹${value}`} />
+                    <CartesianGrid
+                      strokeDasharray="3 3"
+                      stroke={isDarkTheme ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)"}
+                    />
+                    <XAxis dataKey="name" stroke={isDarkTheme ? "#b0bec5" : "#37474f"} />
+                    <YAxis tickFormatter={(value) => `₹${value}`} stroke={isDarkTheme ? "#b0bec5" : "#37474f"} />
                     <Tooltip content={<CustomTooltip />} />
                     <Legend />
                     {DEFAULT_CATEGORIES.map((category, index) => (
@@ -260,9 +265,12 @@ const ReportPage = () => {
               <div className="chart-container">
                 <ResponsiveContainer width="100%" height={300}>
                   <BarChart data={reportData.weekdayData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis tickFormatter={(value) => `₹${value}`} />
+                    <CartesianGrid
+                      strokeDasharray="3 3"
+                      stroke={isDarkTheme ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)"}
+                    />
+                    <XAxis dataKey="name" stroke={isDarkTheme ? "#b0bec5" : "#37474f"} />
+                    <YAxis tickFormatter={(value) => `₹${value}`} stroke={isDarkTheme ? "#b0bec5" : "#37474f"} />
                     <Tooltip formatter={(value) => formatCurrency(value)} />
                     <Bar dataKey="amount" fill="#1e88e5" name="Daily Spending" radius={[4, 4, 0, 0]} />
                   </BarChart>
@@ -281,15 +289,19 @@ const ReportPage = () => {
               <div className="chart-container">
                 <ResponsiveContainer width="100%" height={300}>
                   <LineChart data={reportData.trendData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                    <CartesianGrid strokeDasharray="3 3" />
+                    <CartesianGrid
+                      strokeDasharray="3 3"
+                      stroke={isDarkTheme ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)"}
+                    />
                     <XAxis
                       dataKey="date"
                       tickFormatter={(value) => {
                         const date = new Date(value)
                         return `${date.getMonth() + 1}/${date.getDate()}`
                       }}
+                      stroke={isDarkTheme ? "#b0bec5" : "#37474f"}
                     />
-                    <YAxis tickFormatter={(value) => `₹${value}`} />
+                    <YAxis tickFormatter={(value) => `₹${value}`} stroke={isDarkTheme ? "#b0bec5" : "#37474f"} />
                     <Tooltip
                       formatter={(value) => formatCurrency(value)}
                       labelFormatter={(value) => {
